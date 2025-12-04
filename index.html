@@ -94,13 +94,24 @@
         nav a::before { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, #FFD700, #FFA500); transition: width 0.3s ease; }
         nav a:hover { color: #FFD700; }
         nav a:hover::before { width: 100%; }
-        .btn-header-support { display: inline-block; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #1a1a1a; padding: 10px 24px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 12px; border: none; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(255, 200, 0, 0.4); text-transform: uppercase; letter-spacing: 0.5px; }
+        .btn-header-support { display: inline-block; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #1a1a1a; padding: 8px 20px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 12px; border: none; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(255, 200, 0, 0.4); text-transform: uppercase; letter-spacing: 0.5px; }
         .btn-header-support:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(255, 200, 0, 0.7); }
 
         main { max-width: 1400px; margin: 0 auto; padding: 0 50px; position: relative; z-index: 2; }
         
         .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding: 140px 0 60px; animation: slideUp 0.9s ease-out; }
         .hero-left { z-index: 3; }
+        
+        /* Скрыть мобильное изображение на десктопе */
+        .hero-right-mobile {
+            display: none; 
+        }
+        
+        /* Стили для десктопного контейнера hero-combined */
+        .hero-combined { background: rgba(255, 200, 0, 0.08); padding: 30px 30px; border-radius: 24px; border: 1px solid rgba(255, 200, 0, 0.15); backdrop-filter: blur(10px); animation: slideUp 0.9s ease-out 0.2s backwards; }
+        .hero-combined p { color: #ffffff; font-size: 16px; line-height: 1.8; margin-bottom: 15px; }
+        .hero-combined p:last-child { margin-bottom: 0; }
+
         .hero-tag { display: inline-flex; align-items: center; gap: 12px; background: rgba(255, 200, 0, 0.1); border: 1px solid rgba(255, 200, 0, 0.3); padding: 12px 20px; border-radius: 16px; font-size: 13px; font-weight: 700; color: #FFD700; margin-bottom: 30px; backdrop-filter: blur(10px); animation: slideUp 0.9s ease-out 0.1s backwards; }
         .hero-tags { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 30px; animation: slideUp 0.9s ease-out 0.1s backwards; }
         .hero-tags .hero-tag { margin-bottom: 0; }
@@ -108,10 +119,7 @@
         .tiktok-icon { width: 24px; height: 24px; cursor: pointer; transition: all 0.3s ease; filter: brightness(1.2); }
         .tiktok-icon:hover { transform: scale(1.2) rotate(5deg); filter: brightness(1.5); }
         .hero h1 { font-size: 72px; font-weight: 900; line-height: 1.1; margin-bottom: 25px; background: linear-gradient(135deg, #FF6B9D 0%, #C06C84 50%, #6C567B 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: slideUp 0.9s ease-out 0.15s backwards; letter-spacing: -2px; }
-        .hero-combined { background: rgba(255, 200, 0, 0.08); padding: 30px 30px; border-radius: 24px; border: 1px solid rgba(255, 200, 0, 0.15); backdrop-filter: blur(10px); animation: slideUp 0.9s ease-out 0.2s backwards; }
-        .hero-combined p { color: #ffffff; font-size: 16px; line-height: 1.8; margin-bottom: 15px; }
-        .hero-combined p:last-child { margin-bottom: 0; }
-
+        
         .hero-right { position: relative; height: 500px; animation: slideUp 0.9s ease-out 0.4s backwards; }
         .orbiting-circles { position: absolute; width: 100%; height: 100%; }
         .orbit-1 { position: absolute; width: 200px; height: 200px; border: 1px solid rgba(255, 200, 0, 0.2); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: orbitSmall 20s linear infinite; }
@@ -120,6 +128,20 @@
         .hero-image-glow { position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, rgba(255, 200, 0, 0.2) 0%, transparent 70%); border-radius: 50%; animation: pulse 4s ease-in-out infinite; }
         .hero-image { position: absolute; width: 100%; height: 100%; object-fit: cover; border-radius: 20px; border: 2px solid rgba(255, 200, 0, 0.4); box-shadow: 0 0 80px rgba(255, 200, 0, 0.5), inset 0 0 60px rgba(255, 200, 0, 0.15), 0 20px 60px rgba(255, 200, 0, 0.3); transition: all 0.3s ease; animation: float 4s ease-in-out infinite; }
         .hero-image:hover { box-shadow: 0 0 120px rgba(255, 200, 0, 0.8), inset 0 0 80px rgba(255, 200, 0, 0.2), 0 30px 80px rgba(255, 200, 0, 0.5); transform: translateY(-15px) scale(1.02); }
+        
+        /* СТИЛИ ДЛЯ МОБИЛЬНОГО КОНТЕЙНЕРА ВНУТРИ hero-left */
+        .hero-right-mobile .hero-image-container {
+            position: relative; 
+            width: 100%;
+            max-width: 320px; 
+            height: 320px;
+            top: auto; 
+            left: auto; 
+            transform: none; 
+        }
+        .hero-right-mobile .hero-image {
+            position: relative;
+        }
 
         .text-scroll-section { padding: 20px 0; position: relative; z-index: 2; }
         .scroll-container { overflow: hidden; width: 100%; background: rgba(50, 50, 50, 0.3); backdrop-filter: blur(20px); padding: 15px 0; border-radius: 20px; border: 1px solid rgba(255, 200, 0, 0.15); }
@@ -237,13 +259,15 @@
             }
             
             .btn-header-support {
-                width: 100%;
-                padding: 12px 0;
+                width: 80%;
+                max-width: 250px;
+                padding: 10px 0;
+                margin: 0 auto;
             }
 
             .hero, .lessons-grid, .about-section { grid-template-columns: 1fr; } 
             .hero { padding: 60px 0; gap: 40px; } 
-            .hero h1 { font-size: 42px; } 
+            .hero h1 { font-size: 42px; margin-bottom: 15px; } 
             .hero-right { height: 350px; }
             .hero-image-container { width: 320px; height: 320px; }
             .section-title { font-size: 32px; } 
@@ -255,6 +279,42 @@
             .scroll-word { padding: 12px 20px; font-size: 14px; }
             .about-section, .lessons-section { padding: 50px 30px; gap: 30px; }
             .lesson-card { padding: 30px; }
+            
+            /* СТИЛИ ДЛЯ ОБЪЕДИНЕННОГО БЛОКА */
+            .mobile-unified-block {
+                /* Применяем общий фон и границу к оберточному блоку */
+                background: rgba(40, 40, 40, 0.5); 
+                padding: 30px;
+                border-radius: 20px;
+                border: 1px solid rgba(255, 200, 0, 0.15);
+            }
+            
+            /* Убираем фон и границу с внутренних элементов, чтобы не было дублирования */
+            .hero-combined {
+                background: none;
+                padding: 0;
+                border: none;
+                backdrop-filter: none;
+                margin-bottom: 0; /* Удаляем отступ, так как он будет в новом контейнере */
+            }
+            
+            .hero-combined p {
+                margin-bottom: 10px;
+            }
+
+            /* Скрываем десктопное изображение */
+            .hero-right {
+                display: none;
+            }
+            
+            /* Показываем и центрируем мобильное изображение */
+            .hero-right-mobile {
+                display: flex;
+                justify-content: center;
+                margin-top: 25px; /* Небольшой отступ от текста */
+                position: relative;
+                height: 350px; 
+            }
         }
     </style>
 </head>
@@ -306,13 +366,29 @@
                     <div class="hero-tag">👥 120+ довольных учеников</div>
                     <div class="hero-tag">💰 1500₽ месячный курс</div>
                 </div>
-                <h1>TemkaEnglish</h1>
-                <div class="hero-combined">
-                    <p><span style="background: linear-gradient(120deg, #FF6B9D, #C06C84); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 900;">TemkaEnglish</span></p>
-                    <p><span style="background: linear-gradient(120deg, #FF6B9D, #C06C84); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 900;">Уроки английского, на которых реально весело</span></p>
-                    <p>Учеба, мемы, игры и куча разговорной практики. Забудь про скучные уроки и присоединяйся к 120+ довольным ученикам.</p>
+                
+                <div class="mobile-unified-block">
+                    <h1>TemkaEnglish</h1>
+                    <div class="hero-combined">
+                        <p><span style="background: linear-gradient(120deg, #FF6B9D, #C06C84); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 900;">TemkaEnglish</span></p>
+                        <p><span style="background: linear-gradient(120deg, #FF6B9D, #C06C84); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 900;">Уроки английского, на которых реально весело</span></p>
+                        <p>Учеба, мемы, игры и куча разговорной практики. Забудь про скучные уроки и присоединяйся к 120+ довольным ученикам.</p>
+                    </div>
+                    
+                    <div class="hero-right-mobile">
+                        <div class="orbiting-circles">
+                            <div class="orbit-1">
+                                <div class="orbit-dot"></div>
+                            </div>
+                        </div>
+                        <div class="hero-image-container">
+                            <div class="hero-image-glow"></div>
+                            <img src="https://i.ibb.co.com/9H6tzGsk/artem.jpg" alt="Темка" class="hero-image">
+                        </div>
+                    </div>
                 </div>
-            </div>
+                </div>
+            
             <div class="hero-right">
                 <div class="orbiting-circles">
                     <div class="orbit-1">
