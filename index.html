@@ -302,7 +302,6 @@
     </header>
 
     <main>
-        <!-- Весь остальной HTML без изменений -->
         <section class="hero">
             <div class="hero-left">
                 <div class="hero-tags">
@@ -527,7 +526,18 @@
             "https://i.ibb.co.com/5W7yVpc5/7.png",
             "https://i.ibb.co.com/6Jq8Ht7p/1.png",
             "https://i.ibb.co.com/Kxztq53Y/2.png",
-            "https://i.ibb.co.com/HTrqB0Rk/3.png"
+            "https://i.ibb.co.com/HTrqB0Rk/3.png",
+            "https://i.ibb.co.com/7J3sYdfb/7.png",
+            "https://i.ibb.co.com/ksYfYqj8/6.png",
+            "https://i.ibb.co.com/TDQvctWg/5.png",
+            "https://i.ibb.co.com/21hwDQ64/4.png",
+            "https://i.ibb.co.com/Xfbt4pmJ/3.png",
+            "https://i.ibb.co.com/B5sV3Xqn/2.png",
+            "https://i.ibb.co.com/cKwdJgj5/1.png",
+            "https://i.ibb.co.com/vCmmJBSQ/11.png",
+            "https://i.ibb.co.com/yFS4kgvz/10.png",
+            "https://i.ibb.co.com/LzFSXYdm/9.png",
+            "https://i.ibb.co.com/qqJpk2J/8.png"
         ];
 
         const container = document.getElementById('meme-container');
@@ -536,15 +546,12 @@
             img.src = src;
             img.className = 'meme-float';
             
-            // Случайный размер
             const size = 80 + Math.random() * 80;
             img.style.width = `${size}px`;
             
-            // Случайный угол поворота от -45 до +45 градусов
             const randomRotation = Math.floor(Math.random() * 91) - 45;
             img.style.setProperty('--rotation', `${randomRotation}deg`);
 
-            // Случайная позиция по экрану (5% отступ от краёв)
             const randomX = 5 + Math.random() * 90;
             const randomY = 5 + Math.random() * 90;
             img.style.left = `${randomX}%`;
