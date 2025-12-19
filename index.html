@@ -30,13 +30,28 @@
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
+        /* Анимация float теперь использует CSS переменные для сохранения угла */
+        @keyframes float { 
+            0%, 100% { transform: translateY(0px) rotate(var(--rotation)); } 
+            50% { transform: translateY(-15px) rotate(var(--rotation)); } 
+        }
         @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
         @keyframes floatSlow { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
         @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
         @keyframes orbitSmall { 0% { transform: rotate(0deg) translateX(60px) rotate(0deg); } 100% { transform: rotate(360deg) translateX(60px) rotate(-360deg); } }
         @keyframes scrollRight { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-        .meme-float { position: fixed; z-index: 0; pointer-events: none; opacity: 0.07; filter: brightness(1.15); height: auto; border-radius: 12px; animation: float 12s ease-in-out infinite; }
+        
+        .meme-float { 
+            position: fixed; 
+            z-index: 0; 
+            pointer-events: none; 
+            opacity: 0.07; 
+            filter: brightness(1.15); 
+            height: auto; 
+            border-radius: 12px; 
+            animation: float 12s ease-in-out infinite; 
+        }
+
         .floating-banner { position: fixed; top: 0; left: 0; right: 0; height: 35px; background: linear-gradient(90deg, rgba(255, 200, 0, 0.25), rgba(255, 150, 0, 0.25)); border-bottom: 1px solid rgba(255, 200, 0, 0.4); display: flex; align-items: center; overflow: hidden; z-index: 999; backdrop-filter: blur(10px); }
         .banner-content { display: flex; white-space: nowrap; animation: scroll 8s linear infinite; }
         .banner-text { padding: 0 30px; font-size: 13px; font-weight: 700; background: linear-gradient(90deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; }
@@ -49,7 +64,6 @@
         .theme-btn:hover { transform: scale(1.1); border-color: rgba(255, 200, 0, 0.6); }
         .theme-btn.active { background: linear-gradient(135deg, #FFD700, #FFA500); border-color: #FFD700; box-shadow: 0 0 20px rgba(255, 200, 0, 0.5); }
         .container { max-width: 1400px; margin: 0 auto; padding: 0 50px; }
-       
         header {
             background: rgba(15, 15, 15, 0.95);
             backdrop-filter: blur(20px);
@@ -59,7 +73,6 @@
             z-index: 1000;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
-       
         .header-content { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
         .logo {
             font-size: 24px; font-weight: 900;
@@ -82,12 +95,9 @@
         .btn-header-support { display: inline-block; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #1a1a1a; padding: 8px 20px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 12px; border: none; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(255, 200, 0, 0.4); text-transform: uppercase; letter-spacing: 0.5px; }
         .btn-header-support:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(255, 200, 0, 0.7); }
         main { max-width: 1400px; margin: 0 auto; padding: 0 50px; position: relative; z-index: 2; }
-       
         .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding: 140px 0 60px; animation: slideUp 0.9s ease-out; }
         .hero-left { z-index: 3; }
-       
         .hero-right-mobile { display: none; }
-       
         .hero-combined { background: rgba(255, 200, 0, 0.08); padding: 30px 30px; border-radius: 24px; border: 1px solid rgba(255, 200, 0, 0.15); backdrop-filter: blur(10px); animation: slideUp 0.9s ease-out 0.2s backwards; }
         .hero-combined p { color: #ffffff; font-size: 16px; line-height: 1.8; margin-bottom: 15px; }
         .hero-combined p:last-child { margin-bottom: 0; }
@@ -98,7 +108,6 @@
         .tiktok-icon { width: 24px; height: 24px; cursor: pointer; transition: all 0.3s ease; filter: brightness(1.2); }
         .tiktok-icon:hover { transform: scale(1.2) rotate(5deg); filter: brightness(1.5); }
         .hero h1 { font-size: 72px; font-weight: 900; line-height: 1.1; margin-bottom: 25px; background: linear-gradient(135deg, #FF6B9D 0%, #C06C84 50%, #6C567B 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: slideUp 0.9s ease-out 0.15s backwards; letter-spacing: -2px; }
-       
         .hero-right { position: relative; height: 500px; animation: slideUp 0.9s ease-out 0.4s backwards; }
         .orbiting-circles { position: absolute; width: 100%; height: 100%; }
         .orbit-1 { position: absolute; width: 200px; height: 200px; border: 1px solid rgba(255, 200, 0, 0.2); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: orbitSmall 20s linear infinite; }
@@ -129,7 +138,6 @@
         .features li::before { content: '✓'; color: #FFD700; font-weight: 900; margin-right: 15px; font-size: 20px; background: rgba(255, 200, 0, 0.1); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin-right: 15px; }
         .btn-support { display: inline-block; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #1a1a1a; padding: 12px 30px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 13px; margin-top: 25px; border: none; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(255, 200, 0, 0.4); text-transform: uppercase; letter-spacing: 0.5px; }
         .btn-support:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(255, 200, 0, 0.7); }
-
         .gallery-slider { position: relative; overflow: hidden; padding: 0 60px; }
         .gallery-track { display: flex; gap: 30px; transition: transform 0.5s ease; }
         .gallery-item {
@@ -143,7 +151,6 @@
         }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
         .gallery-item:hover img { transform: scale(1.1); }
-
         .video-slider {
             position: relative;
             overflow: hidden;
@@ -188,7 +195,6 @@
             object-fit: cover;
             border-radius: 50%;
         }
-
         .slider-btn {
             position: absolute; top: 50%; transform: translateY(-50%);
             width: 50px; height: 50px; background: linear-gradient(135deg, #FFD700, #FFA500);
@@ -199,7 +205,6 @@
         .slider-btn:hover { transform: translateY(-50%) scale(1.15); }
         .slider-btn.prev { left: 10px; }
         .slider-btn.next { right: 10px; }
-
         .lessons-section { background: linear-gradient(135deg, rgba(40, 40, 40, 0.3) 0%, rgba(35, 35, 35, 0.3) 100%); backdrop-filter: blur(20px); padding: 80px 60px; border-radius: 20px; border: 1px solid rgba(255, 200, 0, 0.15); position: relative; overflow: hidden; margin-bottom: 80px; }
         .lessons-section::before { content: ''; position: absolute; top: -30%; left: -30%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255, 200, 0, 0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
         .lessons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; position: relative; z-index: 1; }
@@ -237,7 +242,6 @@
         .faq-item.active .faq-answer { max-height: 500px; margin-top: 15px; }
         .faq-item.active .faq-toggle { transform: rotate(180deg); }
         footer { background: rgba(10, 10, 10, 0.9); border-top: 1px solid rgba(255, 200, 0, 0.1); padding: 60px 50px; text-align: center; color: rgba(200, 200, 200, 0.8); font-size: 14px; font-weight: 500; backdrop-filter: blur(20px); }
-
         @media (max-width: 768px) {
             .container, main { padding: 0 20px; }
             .header-content { flex-direction: column; align-items: center; padding: 15px 0; }
@@ -268,7 +272,7 @@
         <button class="theme-btn" onclick="setTheme('dark')">⚫</button>
         <button class="theme-btn" onclick="setTheme('red')">🔴</button>
     </div>
-   
+
     <div class="floating-banner">
         <div class="banner-content">
             <span class="banner-text" onclick="window.open('https://t.me/temkaenglish', '_blank')">📱 t.me/temkaenglish</span>
@@ -276,10 +280,10 @@
             <span class="banner-text" onclick="window.open('https://t.me/temkaenglish', '_blank')">📱 t.me/temkaenglish</span>
         </div>
     </div>
-   
+
     <div class="side-decoration side-left"></div>
     <div class="side-decoration side-right"></div>
-   
+
     <header>
         <div class="container">
             <div class="header-content">
@@ -297,7 +301,7 @@
             </div>
         </div>
     </header>
-   
+
     <main>
         <section class="hero">
             <div class="hero-left">
@@ -309,7 +313,7 @@
                     <div class="hero-tag">👥 120+ довольных учеников</div>
                     <div class="hero-tag">💰 1500₽ месячный курс</div>
                 </div>
-               
+
                 <div class="mobile-unified-block">
                     <h1>TemkaEnglish</h1>
                     <div class="hero-combined">
@@ -317,7 +321,7 @@
                         <p><span style="background: linear-gradient(120deg, #FF6B9D, #C06C84); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 900;">Уроки английского, на которых реально весело</span></p>
                         <p>Учеба, мемы, игры и куча разговорной практики. Забудь про скучные уроки и присоединяйся к 120+ довольным ученикам.</p>
                     </div>
-                   
+
                     <div class="hero-right-mobile">
                         <div class="orbiting-circles">
                             <div class="orbit-1">
@@ -331,7 +335,7 @@
                     </div>
                 </div>
             </div>
-           
+
             <div class="hero-right">
                 <div class="orbiting-circles">
                     <div class="orbit-1">
@@ -517,29 +521,35 @@
 
     <script>
         const MEME_IMAGES = [
-            "https://i.ibb.co.com/Q3NcsbnG/5447655214971747837.jpg",
-            "https://i.ibb.co.com/pjWzS9N4/5447655214971747834.jpg",
-            "https://i.ibb.co.com/TqLrVgQk/5447655214971747835.jpg",
-            "https://i.ibb.co.com/Df8vPFxH/5447655214971747836.jpg",
-            "https://i.ibb.co.com/fdCw521Q/5447655214971747841.jpg",
-            "https://i.ibb.co.com/vxhnbcRk/photo-2025-12-18-16-50-44.jpg",
-            "https://i.ibb.co.com/Sw8D9PjQ/photo-2025-12-18-16-50-40.jpg",
-            "https://i.ibb.co.com/8DFXvyjL/photo-2025-12-18-16-50-36.jpg",
-            "https://i.ibb.co.com/MykC6tpb/photo-2025-12-18-16-50-53.jpg",
-            "https://i.ibb.co.com/sdw86ftH/photo-2025-12-18-16-50-51.jpg",
-            "https://i.ibb.co.com/sv41gPns/photo-2025-12-18-16-50-48.jpg"
+            "https://i.ibb.co.com/d4N6jLwY/4.png",
+            "https://i.ibb.co.com/wftTYbX/5.png",
+            "https://i.ibb.co.com/N2wgSnzv/6.png",
+            "https://i.ibb.co.com/5W7yVpc5/7.png",
+            "https://i.ibb.co.com/6Jq8Ht7p/1.png",
+            "https://i.ibb.co.com/Kxztq53Y/2.png",
+            "https://i.ibb.co.com/HTrqB0Rk/3.png"
         ];
+
         const FIXED_POSITIONS = [
             {x: 5, y: 12}, {x: 88, y: 8}, {x: 18, y: 68}, {x: 78, y: 72}, {x: 42, y: 18},
-            {x: 12, y: 82}, {x: 92, y: 58}, {x: 32, y: 42}, {x: 68, y: 88}, {x: 55, y: 65}, {x: 20, y: 35}
+            {x: 12, y: 82}, {x: 92, y: 58}
         ];
+
         const container = document.getElementById('meme-container');
         MEME_IMAGES.forEach((src, i) => {
             const img = document.createElement('img');
             img.src = src;
             img.className = 'meme-float';
+            
+            // Случайный размер
             const size = 80 + Math.random() * 80;
             img.style.width = `${size}px`;
+            
+            // ГЕНЕРАЦИЯ РАНДОМНОГО УГЛА ПОВОРОТА (от -45 до +45 градусов)
+            const randomRotation = Math.floor(Math.random() * 91) - 45;
+            // Устанавливаем CSS-переменную, которую использует анимация float в стилях
+            img.style.setProperty('--rotation', `${randomRotation}deg`);
+
             const pos = FIXED_POSITIONS[i];
             img.style.left = `${pos.x}%`;
             img.style.top = `${pos.y}%`;
@@ -562,7 +572,7 @@
         const videoContainer = document.querySelector('.video-slider-container');
         const videoItems = document.querySelectorAll('.video-item');
         function slideVideo(direction) {
-            const gap = 60;
+            const gap = window.innerWidth <= 768 ? 40 : 60;
             const itemWidth = videoItems[0].offsetWidth + gap;
             videoContainer.scrollBy({
                 left: direction * itemWidth,
