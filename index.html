@@ -30,7 +30,6 @@
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-        /* Анимация float теперь использует CSS переменные для сохранения угла */
         @keyframes float { 
             0%, 100% { transform: translateY(0px) rotate(var(--rotation)); } 
             50% { transform: translateY(-15px) rotate(var(--rotation)); } 
@@ -303,6 +302,7 @@
     </header>
 
     <main>
+        <!-- Весь остальной HTML без изменений -->
         <section class="hero">
             <div class="hero-left">
                 <div class="hero-tags">
@@ -530,13 +530,8 @@
             "https://i.ibb.co.com/HTrqB0Rk/3.png"
         ];
 
-        const FIXED_POSITIONS = [
-            {x: 5, y: 12}, {x: 88, y: 8}, {x: 18, y: 68}, {x: 78, y: 72}, {x: 42, y: 18},
-            {x: 12, y: 82}, {x: 92, y: 58}
-        ];
-
         const container = document.getElementById('meme-container');
-        MEME_IMAGES.forEach((src, i) => {
+        MEME_IMAGES.forEach(src => {
             const img = document.createElement('img');
             img.src = src;
             img.className = 'meme-float';
@@ -545,14 +540,16 @@
             const size = 80 + Math.random() * 80;
             img.style.width = `${size}px`;
             
-            // ГЕНЕРАЦИЯ РАНДОМНОГО УГЛА ПОВОРОТА (от -45 до +45 градусов)
+            // Случайный угол поворота от -45 до +45 градусов
             const randomRotation = Math.floor(Math.random() * 91) - 45;
-            // Устанавливаем CSS-переменную, которую использует анимация float в стилях
             img.style.setProperty('--rotation', `${randomRotation}deg`);
 
-            const pos = FIXED_POSITIONS[i];
-            img.style.left = `${pos.x}%`;
-            img.style.top = `${pos.y}%`;
+            // Случайная позиция по экрану (5% отступ от краёв)
+            const randomX = 5 + Math.random() * 90;
+            const randomY = 5 + Math.random() * 90;
+            img.style.left = `${randomX}%`;
+            img.style.top = `${randomY}%`;
+            
             img.style.animationDelay = `-${Math.random() * 8}s`;
             container.appendChild(img);
         });
